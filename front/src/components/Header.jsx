@@ -2,7 +2,7 @@ import logo from "../assets/logo.svg";
 import { NavLink, Link } from "react-router-dom";
 
 export default function Header() {
-    return <header>
+    return <header className="entete-page">
         <Link to="/"><img src={logo} alt="Logo SportSee"/></Link>
         <nav>
             <NavLink to="/">Accueil</NavLink>
