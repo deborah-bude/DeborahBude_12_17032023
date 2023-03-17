@@ -1,3 +1,42 @@
 .entete-page {
-	background-color: black;
+	background-color: $header-footer-color;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	width: 100%;
+	height: $menu-height;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+
+	& > div {
+		width: $max-width-screen;
+		max-width: 80%;
+		margin: auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: center;
+		padding: 10px 0;
+	}
+
+	&__logo {
+		width: 10%;
+		max-width: 250px;
+	}
+
+	&__nav {
+		width: 75%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: center;
+
+		&-item {
+			color: #ffffff;
+		}
+	}
 }

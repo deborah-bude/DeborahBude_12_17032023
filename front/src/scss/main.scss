@@ -1,6 +1,7 @@
-@import "./utils/variables";
-@import "./base/normalize_doc";
-@import "./base/typographie";
-@import "./layout/header";
-@import "./layout/footer";
-@import "./layout/responsive";
+@import "utils/variables";
+@import "base/normalize_doc";
+@import "base/typographie";
+@import "components/header";
+@import "components/footer";
+@import "components/nutrition-value";
+@import "layout/responsive";

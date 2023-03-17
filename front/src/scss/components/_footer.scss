@@ -1,3 +1,25 @@
 .pied-page {
-	background-color: $footer-color;
+	background-color: $header-footer-color;
+	height: calc(100vh - $menu-height);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: flex-end;
+	flex-direction: column;
+	position: fixed;
+	top: $menu-height;
+	left: 0;
+	color: white;
+	padding: 0 20px;
+	z-index: 2;
+
+	& > ul {
+		margin: auto;
+	}
+	p {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+		transform: scale(-1);
+		margin: 20px auto;
+	}
 }
