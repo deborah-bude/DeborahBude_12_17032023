@@ -1,3 +1,4 @@
+import React from "react";
 import caloriesIcon from "../assets/calories-icon.svg";
 import proteinIcon from "../assets/protein-icon.svg";
 import carbsIcon from "../assets/carbs-icon.svg";
@@ -27,11 +28,11 @@ export default function NutritionValue(nutrition) {
 			break;
 	}
 	return (
-		<div>
+		<div className="nutrition-value">
 			<img src={icon} alt={altIcon} />
-			<div>
-				<p>{nutrition.content}</p>
-				<p>{nutrition.value}</p>
+			<div className="nutrition-value__content">
+				<p className="nutrition-value__content--number">{nutrition.content}</p>
+				<p className="nutrition-value__content--type">{nutrition.value}</p>
 			</div>
 		</div>
 	);

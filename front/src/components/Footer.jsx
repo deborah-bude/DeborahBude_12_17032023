@@ -1,3 +1,4 @@
+import React from "react";
 import bike from "../assets/bike.svg";
 import meditation from "../assets/meditation.svg";
 import musculation from "../assets/musculation.svg";

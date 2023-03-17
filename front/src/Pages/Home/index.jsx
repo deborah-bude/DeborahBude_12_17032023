@@ -1,3 +1,4 @@
+import React from "react";
 import DailyActivity from "../../components/DailyActivity";
 import SessionDuration from "../../components/SessionDuration";
 import RadarChart from "../../components/RadarChart";
@@ -7,7 +8,7 @@ import NutritionValue from "../../components/NutritionValue";
 export default function Home() {
 	const name = "Karl";
 	return (
-		<section>
+		<main className="corps-page">
 			<section>
 				<h1>
 					Bonjour <span className="title-page--red">{name}</span>
@@ -24,6 +25,6 @@ export default function Home() {
 				<NutritionValue content="290g" value="Glucides" />
 				<NutritionValue content="50g" value="Lipides" />
 			</section>
-		</section>
+		</main>
 	);
 }
