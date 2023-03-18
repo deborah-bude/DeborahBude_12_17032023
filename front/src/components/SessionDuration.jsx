@@ -1,5 +1,13 @@
 import React from "react";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import {
+	LineChart,
+	Line,
+	CartesianGrid,
+	XAxis,
+	YAxis,
+	Tooltip,
+	ResponsiveContainer,
+} from "recharts";
 
 export default function sessionDuration() {
 	const sessions = [
@@ -33,21 +41,17 @@ export default function sessionDuration() {
 		},
 	];
 	return (
-		<section>
+		<section className="user-data__duration">
 			<h2>Durée moyenne des sessions</h2>
-			<LineChart
-				width={730}
-				height={250}
-				data={sessions}
-				margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-			>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="day" />
-				<YAxis />
-				<Tooltip />
-				<Legend />
-				<Line type="monotone" dataKey="sessionLength" stroke="#8884d8" />
-			</LineChart>
+			<ResponsiveContainer width="100%" height={250}>
+				<LineChart data={sessions} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+					<CartesianGrid strokeDasharray="3 3" />
+					<XAxis dataKey="day" />
+					<YAxis />
+					<Tooltip />
+					<Line type="monotone" dataKey="sessionLength" stroke="#8884d8" />
+				</LineChart>
+			</ResponsiveContainer>
 		</section>
 	);
 }

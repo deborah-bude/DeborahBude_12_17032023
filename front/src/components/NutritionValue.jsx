@@ -7,6 +7,7 @@ import fatIcon from "../assets/fat-icon.svg";
 export default function NutritionValue(nutrition) {
 	let icon;
 	let altIcon = "Icône" + nutrition.value;
+	let classIcon = "nutrition-value " + nutrition.value;
 	switch (nutrition.value) {
 		case "Calories":
 			icon = caloriesIcon;
@@ -28,7 +29,7 @@ export default function NutritionValue(nutrition) {
 			break;
 	}
 	return (
-		<div className="nutrition-value">
+		<div className={classIcon}>
 			<img src={icon} alt={altIcon} />
 			<div className="nutrition-value__content">
 				<p className="nutrition-value__content--number">{nutrition.content}</p>

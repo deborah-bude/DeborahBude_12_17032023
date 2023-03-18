@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Legend, ResponsiveContainer } from "recharts";
 
 export default function dailyActivity() {
 	const sessions = [
@@ -40,21 +40,18 @@ export default function dailyActivity() {
 		},
 	];
 	return (
-		<section>
+		<section className="user-data__daily">
 			<h2>Activité quotidienne</h2>
-			<div className="graphic-legend">
-				<p className="graphic-legend--weight">Poids (kg)</p>
-				<p className="graphic-legend--calories">Calories brûlées (kCal)</p>
-			</div>
-			<BarChart width={730} height={250} data={sessions}>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="day" />
-				<YAxis dataKey="calories" />
-				<Tooltip />
-				<Legend verticalAlign="top" align="right" iconType="circle" iconSize="6" />
-				<Bar dataKey="kilogram" fill="#282D30" />
-				<Bar dataKey="calories" fill="#E60000" />
-			</BarChart>
+			<ResponsiveContainer width="100%" height={250}>
+				<BarChart data={sessions}>
+					<CartesianGrid strokeDasharray="3 3" />
+					<XAxis dataKey="day" />
+					<YAxis dataKey="calories" />
+					<Legend verticalAlign="top" align="right" iconType="circle" iconSize="6" />
+					<Bar dataKey="kilogram" fill="#282D30" barSize={7} />
+					<Bar dataKey="calories" fill="#E60000" barSize={7} />
+				</BarChart>
+			</ResponsiveContainer>
 		</section>
 	);
 }

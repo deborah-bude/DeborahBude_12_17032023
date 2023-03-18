@@ -1,8 +1,8 @@
 import React from "react";
 import DailyActivity from "../../components/DailyActivity";
 import SessionDuration from "../../components/SessionDuration";
-import RadarChart from "../../components/RadarChart";
-import GaugeChart from "../../components/GaugeChart";
+import UserPerformance from "../../components/UserPerformance";
+import UserProgression from "../../components/UserProgression";
 import NutritionValue from "../../components/NutritionValue";
 
 export default function Home() {
@@ -15,15 +15,19 @@ export default function Home() {
 				</h1>
 				<p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
 			</section>
-			<DailyActivity />
-			<SessionDuration />
-			<RadarChart />
-			<GaugeChart />
-			<section>
-				<NutritionValue content="1,930kCal" value="Calories" />
-				<NutritionValue content="155g" value="Protéines" />
-				<NutritionValue content="290g" value="Glucides" />
-				<NutritionValue content="50g" value="Lipides" />
+			<section className="user-data">
+				<section className="user-data__details">
+					<DailyActivity />
+					<SessionDuration />
+					<UserPerformance />
+					<UserProgression />
+				</section>
+				<section className="user-data__nutrition">
+					<NutritionValue content="1,930kCal" value="Calories" />
+					<NutritionValue content="155g" value="Protéines" />
+					<NutritionValue content="290g" value="Glucides" />
+					<NutritionValue content="50g" value="Lipides" />
+				</section>
 			</section>
 		</main>
 	);
