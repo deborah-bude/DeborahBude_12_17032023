@@ -4,14 +4,15 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	align-content: center;
+	align-items: center;
+	padding: 20px;
 
 	img {
-		width: 1/3;
+		width: 60px;
 	}
 
 	&__content {
-		width: 2/3;
+		width: calc(100% - 80px);
 
 		&--number {
 			color: $title-color;
