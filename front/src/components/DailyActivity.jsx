@@ -1,5 +1,12 @@
 import React from "react";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Legend, ResponsiveContainer } from "recharts";
+import { getData, userData, userActivity, userAverageSessions, userPerformance } from "../fetchAPI";
+
+const data = userData("12");
+console.log(data);
+// console.log(userActivity("12"));
+// console.log(userAverageSessions("12"));
+// console.log(userPerformance("12"));
 
 export default function dailyActivity() {
 	const sessions = [

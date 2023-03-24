@@ -5,6 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./scss/main.scss";
 
+// console.log(userActivity("12"));
+// console.log(userAverageSessions("12"));
+// console.log(userPerformance("12"));
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
