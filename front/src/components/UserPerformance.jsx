@@ -1,57 +1,49 @@
-import React from "react";
-import {
-	RadarChart,
-	Radar,
-	PolarGrid,
-	PolarAngleAxis,
-	PolarRadiusAxis,
-	Legend,
-	ResponsiveContainer,
-} from "recharts";
+import React, { useEffect, useState } from "react";
+import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
+import { userPerformance } from "../fetchAPI";
 
-export default function UserPerformance() {
-	const kind = {
-		1: "cardio",
-		2: "energy",
-		3: "endurance",
-		4: "strength",
-		5: "speed",
-		6: "intensity",
-	};
-	const data = [
-		{
-			value: 80,
-			kind: 1,
-		},
-		{
-			value: 120,
-			kind: 2,
-		},
-		{
-			value: 140,
-			kind: 3,
-		},
-		{
-			value: 50,
-			kind: 4,
-		},
-		{
-			value: 200,
-			kind: 5,
-		},
-		{
-			value: 90,
-			kind: 6,
-		},
-	];
+export default function UserPerformance(user) {
+	const [dataPerformance, setDataPerformance] = useState();
+	useEffect(() => {
+		userPerformance(user.id).then((fetchPerformance) => {
+			setDataPerformance(fetchPerformance.data);
+		});
+	}, []);
+
+	if (!dataPerformance) {
+		return null;
+	}
+
+	const performance = dataPerformance.data.map((data) => {
+		let kind;
+		const value = data.value;
+
+		if (dataPerformance.kind[data.kind] === "energy") {
+			kind = "Énergie";
+		} else if (dataPerformance.kind[data.kind] === "endurance") {
+			kind = "Endurance";
+		} else if (dataPerformance.kind[data.kind] === "cardio") {
+			kind = "Cardio";
+		} else if (dataPerformance.kind[data.kind] === "speed") {
+			kind = "Vitesse";
+		} else if (dataPerformance.kind[data.kind] === "strength") {
+			kind = "Force";
+		} else if (dataPerformance.kind[data.kind] === "intensity") {
+			kind = "Intensité";
+		} else {
+			kind = "Autre";
+		}
+
+		return { value: value, kind: kind };
+	});
+
 	return (
 		<section className="user-data__performance">
 			<ResponsiveContainer width="100%" height={250}>
-				<RadarChart outerRadius={90} data={data}>
-					<PolarGrid />
-					<PolarAngleAxis dataKey="kind.0" />
-					<PolarRadiusAxis angle={30} domain={[0, 200]} />
-					<Radar name="Mike" dataKey="value" fill="#FF0101" fillOpacity={0.6} />
+				<RadarChart startAngle={210} endAngle={570} outerRadius={90} data={performance}>
+					<PolarGrid radialLines={false} />
+					<PolarAngleAxis dataKey="kind" fill="#FF0101" />
+					<Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />
 				</RadarChart>
 			</ResponsiveContainer>
 		</section>
