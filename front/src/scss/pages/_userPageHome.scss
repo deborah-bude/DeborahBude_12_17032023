@@ -2,12 +2,18 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	margin-top: 30px;
+
+	h2 {
+		position: absolute;
+		top: 15px;
+		left: 20px;
+	}
 
 	&__details {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		align-items: flex-start;
 		width: 70%;
 	}
 
@@ -20,17 +26,126 @@
 
 	&__daily {
 		width: 100%;
+		background: #fbfbfb;
+		border-radius: 5px;
+		padding: 30px 5px;
+		position: relative;
+		margin-bottom: 30px;
 	}
+
 	&__duration {
-		width: 30%;
+		background: $second-color;
+		color: #fff;
 	}
+
 	&__performance {
-		width: 30%;
+		background: $title-color;
 	}
+
 	&__progression {
-		width: 30%;
+		background: #fbfbfb;
 	}
+
 	.nutrition-value {
-		width: 100%;
+		width: fit-content;
+		min-width: 300px;
+
+		&__content--number {
+			font-weight: 700;
+			font-size: 2rem;
+		}
+	}
+}
+
+.user-data__duration,
+.user-data__performance,
+.user-data__progression {
+	width: 30%;
+	border-radius: 5px;
+	padding: 30px 5px;
+	position: relative;
+}
+
+.radial-chart {
+	position: relative;
+}
+
+.progression-score {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	z-index: 3;
+	width: 50%;
+	color: $sub-title-color;
+	font-weight: 700;
+
+	strong {
+		color: $title-color;
+		font-size: 2em;
+	}
+}
+
+.radial-chart .recharts-wrapper {
+	position: relative;
+	z-index: 2;
+	&:after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: white;
+		width: 85%;
+		height: 85%;
+		border-radius: 50%;
+		z-index: -1;
+	}
+}
+
+.recharts-polar-angle-axis-tick-value {
+	fill: white;
+}
+
+.recharts-legend-item-text {
+	color: #74798c !important;
+}
+// .session-duration_activeDot {
+// 	position: relative;
+// 	z-index: 2;
+
+// 	&:after {
+// 		content: "dfgdf";
+// 		display: block;
+// 		position: absolute;
+// 		top: 50%;
+// 		left: 50%;
+// 		transform: translate(-50%, -50%);
+// 		background: green;
+// 		width: 200%;
+// 		height: 200%;
+// 		z-index: 1;
+// 	}
+// }
+
+@media screen and (max-width: $tablet-breakpoint) {
+	.user-data {
+		&__details {
+			width: 100%;
+		}
+
+		&__nutrition {
+			width: 100%;
+		}
+		&__duration {
+			width: 100%;
+		}
+		&__performance {
+			width: 100%;
+		}
+		&__progression {
+			width: 100%;
+		}
 	}
 }

@@ -30,8 +30,6 @@ a:hover {
 }
 
 .corps-page {
-	// width: calc(100% - 115px - calc($menu-height + 10px));
-	// max-width: 80%;
-	margin: calc($menu-height + 10px) 10px 10px 115px;
+	margin: calc($menu-height + 30px) 30px 30px 145px;
 	z-index: 1;
 }
