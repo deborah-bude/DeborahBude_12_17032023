@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
 	BarChart,
 	Bar,
@@ -9,21 +8,9 @@ import {
 	Legend,
 	ResponsiveContainer,
 } from "recharts";
-import { userActivity } from "../fetchAPI";
 
-export default function DailyActivity(user) {
-	const [dataActivity, setDataActivity] = useState();
-	useEffect(() => {
-		userActivity(user.id).then((fetchActivity) => {
-			setDataActivity(fetchActivity.data.sessions);
-		});
-	}, []);
-
-	if (!dataActivity) {
-		return null;
-	}
-
-	const dayActivity = dataActivity.map((daily) => {
+export default function DailyActivity(data) {
+	const dayActivity = data.dataActivity.map((daily) => {
 		return { calories: daily.calories, day: daily.day.split("-")[2], kilogram: daily.kilogram };
 	});
 
@@ -33,7 +20,7 @@ export default function DailyActivity(user) {
 			<ResponsiveContainer width="100%" height={250}>
 				<BarChart data={dayActivity}>
 					<CartesianGrid strokeDasharray="3 3" vertical={false} />
-					<XAxis dataKey="day" stroke="#9B9EAC" />
+					<XAxis dataKey="day" stroke="#9B9EAC" tickLine={false} />
 					<YAxis dataKey="calories" stroke="#9B9EAC" strokeWidth={0} orientation="right" />
 					<Tooltip
 						labelStyle={{ display: "none" }}

@@ -1,21 +1,49 @@
 import React, { useEffect, useState } from "react";
+import { useParams, Navigate } from "react-router-dom";
 import DailyActivity from "../../components/DailyActivity";
 import SessionDuration from "../../components/SessionDuration";
 import UserPerformance from "../../components/UserPerformance";
 import UserProgression from "../../components/UserProgression";
 import NutritionValue from "../../components/NutritionValue";
-import { userData } from "../../fetchAPI";
 
-export default function Home() {
-	const userId = "12";
+export default function Home({ source }) {
+	const params = useParams();
+	const userId = params.id;
+
 	const [dataUser, setDataUser] = useState();
+	const [dataActivity, setDataActivity] = useState();
+	const [dataAverageSessions, setDataAverageSessions] = useState();
+	const [dataPerformance, setDataPerformance] = useState();
+
 	useEffect(() => {
-		userData(userId).then((fetchUserInfos) => {
+		source.userData(userId).then((fetchUserInfos) => {
 			setDataUser(fetchUserInfos.data);
 		});
 	}, []);
 
-	if (!dataUser) {
+	useEffect(() => {
+		source.userActivity(userId).then((fetchActivity) => {
+			setDataActivity(fetchActivity.data.sessions);
+		});
+	}, []);
+
+	useEffect(() => {
+		source.userAverageSessions(userId).then((fetchSessionInfos) => {
+			setDataAverageSessions(fetchSessionInfos.data.sessions);
+		});
+	}, []);
+
+	useEffect(() => {
+		source.userPerformance(userId).then((fetchPerformance) => {
+			setDataPerformance(fetchPerformance.data);
+		});
+	}, []);
+
+	// if (userId !== dataUser.id) {
+	// 	return <Navigate to="/page-non-trouvee" replace={true} />;
+	// }
+
+	if (!dataUser || !dataActivity || !dataAverageSessions || !dataPerformance) {
 		return null;
 	}
 
@@ -34,10 +62,10 @@ export default function Home() {
 			</section>
 			<section className="user-data">
 				<section className="user-data__details">
-					<DailyActivity id={userId} />
-					<SessionDuration id={userId} />
-					<UserPerformance id={userId} />
-					<UserProgression id={userId} />
+					<DailyActivity dataActivity={dataActivity} />
+					<SessionDuration dataAverageSessions={dataAverageSessions} />
+					<UserPerformance dataPerformance={dataPerformance} />
+					<UserProgression score={dataUser.todayScore} />
 				</section>
 				<section className="user-data__nutrition">
 					{numberCalorie && <NutritionValue content={numberCalorie} value="Calories" />}

@@ -1,38 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
-import { userPerformance } from "../fetchAPI";
 
-export default function UserPerformance(user) {
-	const [dataPerformance, setDataPerformance] = useState();
-	useEffect(() => {
-		userPerformance(user.id).then((fetchPerformance) => {
-			setDataPerformance(fetchPerformance.data);
-		});
-	}, []);
-
-	if (!dataPerformance) {
+export default function UserPerformance(data) {
+	if (!data) {
 		return null;
 	}
 
-	const performance = dataPerformance.data.map((data) => {
+	const performance = data.dataPerformance.data.map((data) => {
 		let kind;
 		const value = data.value;
+		const dictionary = {
+			1: "cardio",
+			2: "energy",
+			3: "endurance",
+			4: "strength",
+			5: "speed",
+			6: "intensity",
+		};
 
-		if (dataPerformance.kind[data.kind] === "energy") {
-			kind = "Énergie";
-		} else if (dataPerformance.kind[data.kind] === "endurance") {
-			kind = "Endurance";
-		} else if (dataPerformance.kind[data.kind] === "cardio") {
-			kind = "Cardio";
-		} else if (dataPerformance.kind[data.kind] === "speed") {
-			kind = "Vitesse";
-		} else if (dataPerformance.kind[data.kind] === "strength") {
-			kind = "Force";
-		} else if (dataPerformance.kind[data.kind] === "intensity") {
-			kind = "Intensité";
-		} else {
-			kind = "Autre";
-		}
+		kind = dictionary[data.kind];
 
 		return { value: value, kind: kind };
 	});

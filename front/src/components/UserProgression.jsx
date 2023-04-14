@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
-import { userData } from "../fetchAPI";
 
 export default function UserProgression(user) {
-	const [UserScore, setUserScore] = useState();
-	useEffect(() => {
-		userData(user.id).then((fetchUserScoreInfos) => {
-			setUserScore(fetchUserScoreInfos.data.todayScore);
-		});
-	}, []);
-
-	const score = UserScore * 100;
+	const score = user.score * 100;
 	const data = [
-		{ score: 100, fill: "white" },
+		{ score: 100, fill: "white", background: "#ffffff" },
 		{ score: score, fill: "#FF0000" },
 	];
 

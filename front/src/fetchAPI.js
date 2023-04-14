@@ -65,3 +65,10 @@ export function userPerformance(userId) {
 			console.log(err.message);
 		});
 }
+
+export const sourceApi = {
+	userData,
+	userActivity,
+	userAverageSessions,
+	userPerformance,
+};
