@@ -111,23 +111,27 @@
 .recharts-legend-item-text {
 	color: #74798c !important;
 }
-// .session-duration_activeDot {
-// 	position: relative;
-// 	z-index: 2;
 
-// 	&:after {
-// 		content: "dfgdf";
-// 		display: block;
-// 		position: absolute;
-// 		top: 50%;
-// 		left: 50%;
-// 		transform: translate(-50%, -50%);
-// 		background: green;
-// 		width: 200%;
-// 		height: 200%;
-// 		z-index: 1;
-// 	}
-// }
+.recharts-radial-bar-background:first-child {
+	fill: white;
+}
+
+#animation-circle {
+	transform-origin: center;
+	animation: scale-circle 1s ease-in-out infinite;
+}
+
+@keyframes scale-circle {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.8);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
 
 @media screen and (max-width: $tablet-breakpoint) {
 	.user-data {
