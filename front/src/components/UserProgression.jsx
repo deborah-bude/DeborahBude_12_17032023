@@ -1,8 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 
-export default function UserProgression(user) {
-	const score = user.score * 100;
+/**
+ *
+ * @param { Number } props.score
+ * @returns
+ */
+export default function UserProgression(props) {
+	const score = props.score * 100;
 	const data = [
 		{ score: 100, fill: "white", background: "#ffffff" },
 		{ score: score, fill: "#FF0000" },
@@ -16,19 +22,25 @@ export default function UserProgression(user) {
 					<strong>{score}%</strong> <br />
 					de votre objectif
 				</p>
-				<ResponsiveContainer width="100%" height={250}>
-					<RadialBarChart
-						startAngle={90}
-						endAngle={460}
-						innerRadius={95}
-						outerRadius={120}
-						barSize={10}
-						data={data}
-					>
-						<RadialBar background dataKey="score" cornerRadius={100} />
-					</RadialBarChart>
-				</ResponsiveContainer>
+				<div style={{ width: "100%", height: 230 }}>
+					<ResponsiveContainer>
+						<RadialBarChart
+							startAngle={90}
+							endAngle={460}
+							innerRadius={60}
+							outerRadius={100}
+							barSize={10}
+							data={data}
+						>
+							<RadialBar background dataKey="score" cornerRadius={100} />
+						</RadialBarChart>
+					</ResponsiveContainer>
+				</div>
 			</div>
 		</section>
 	);
 }
+
+UserProgression.propTypes = {
+	score: PropTypes.number.isRequired,
+};

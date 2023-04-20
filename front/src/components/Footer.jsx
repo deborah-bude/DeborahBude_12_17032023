@@ -7,16 +7,16 @@ export default function Footer() {
 	return (
 		<footer className="pied-page">
 			<ul>
-				<li>
+				<li className="pied-page__link">
 					<img src={meditation} alt="Méditation" />
 				</li>
-				<li>
+				<li className="pied-page__link">
 					<img src={swim} alt="Natation" />
 				</li>
-				<li>
+				<li className="pied-page__link">
 					<img src={bike} alt="Vélo" />
 				</li>
-				<li>
+				<li className="pied-page__link">
 					<img src={musculation} alt="Musculation" />
 				</li>
 			</ul>

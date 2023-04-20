@@ -49,6 +49,12 @@ export function userAverageSessions(userId) {
 		});
 }
 
+/**
+ * Get user performance data from API
+ *
+ * @param {string} userId
+ * @returns
+ */
 export function userPerformance(userId) {
 	const url = `http://localhost:3080/user/${userId}/performance`;
 

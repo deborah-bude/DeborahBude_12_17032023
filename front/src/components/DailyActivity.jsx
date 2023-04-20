@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
 	BarChart,
 	Bar,
@@ -9,6 +10,11 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 
+/**
+ *
+ * @param { Array } data.dataActivity
+ * @returns
+ */
 export default function DailyActivity(data) {
 	const dayActivity = data.dataActivity.map((daily) => {
 		return { calories: daily.calories, day: daily.day.split("-")[2], kilogram: daily.kilogram };
@@ -43,3 +49,7 @@ export default function DailyActivity(data) {
 		</section>
 	);
 }
+
+DailyActivity.propTypes = {
+	dataActivity: PropTypes.array.isRequired,
+};

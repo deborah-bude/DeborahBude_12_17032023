@@ -6,45 +6,55 @@ import UserPerformance from "../../components/UserPerformance";
 import UserProgression from "../../components/UserProgression";
 import NutritionValue from "../../components/NutritionValue";
 
+/**
+ *
+ * @param {object} source
+ * @returns
+ */
 export default function Home({ source }) {
 	const params = useParams();
 	const userId = params.id;
 
+	const [isLoading, setLoading] = useState(true);
 	const [dataUser, setDataUser] = useState();
 	const [dataActivity, setDataActivity] = useState();
 	const [dataAverageSessions, setDataAverageSessions] = useState();
 	const [dataPerformance, setDataPerformance] = useState();
 
 	useEffect(() => {
-		source.userData(userId).then((fetchUserInfos) => {
-			setDataUser(fetchUserInfos.data);
+		const userDataPromise = source.userData(userId);
+		const userActivityPromise = source.userActivity(userId);
+		const userSessionPromise = source.userAverageSessions(userId);
+		const userPerformancePromise = source.userPerformance(userId);
+
+		Promise.allSettled([
+			userDataPromise,
+			userActivityPromise,
+			userSessionPromise,
+			userPerformancePromise,
+		]).then(([userDataResult, userActivityResult, userSessionResult, userPerformanceResult]) => {
+			if (userDataResult.status === "fulfilled") {
+				setDataUser(userDataResult.value.data);
+			}
+			if (userActivityResult.status === "fulfilled") {
+				setDataActivity(userActivityResult.value.data.sessions);
+			}
+			if (userSessionResult.status === "fulfilled") {
+				setDataAverageSessions(userSessionResult.value.data.sessions);
+			}
+			if (userPerformanceResult.status === "fulfilled") {
+				setDataPerformance(userPerformanceResult.value.data);
+			}
+			setLoading(false);
 		});
 	}, []);
 
-	useEffect(() => {
-		source.userActivity(userId).then((fetchActivity) => {
-			setDataActivity(fetchActivity.data.sessions);
-		});
-	}, []);
-
-	useEffect(() => {
-		source.userAverageSessions(userId).then((fetchSessionInfos) => {
-			setDataAverageSessions(fetchSessionInfos.data.sessions);
-		});
-	}, []);
-
-	useEffect(() => {
-		source.userPerformance(userId).then((fetchPerformance) => {
-			setDataPerformance(fetchPerformance.data);
-		});
-	}, []);
-
-	// if (userId !== dataUser.id) {
-	// 	return <Navigate to="/page-non-trouvee" replace={true} />;
-	// }
-
-	if (!dataUser || !dataActivity || !dataAverageSessions || !dataPerformance) {
+	if (isLoading) {
 		return null;
+	}
+
+	if (!dataUser) {
+		return <Navigate to="/page-non-trouvee" replace={true} />;
 	}
 
 	const numberCalorie = dataUser.keyData.calorieCount + "kCal";
@@ -62,16 +72,16 @@ export default function Home({ source }) {
 			</section>
 			<section className="user-data">
 				<section className="user-data__details">
-					<DailyActivity dataActivity={dataActivity} />
-					<SessionDuration dataAverageSessions={dataAverageSessions} />
-					<UserPerformance dataPerformance={dataPerformance} />
-					<UserProgression score={dataUser.todayScore} />
+					{dataActivity && <DailyActivity dataActivity={dataActivity} />}
+					{dataAverageSessions && <SessionDuration dataAverageSessions={dataAverageSessions} />}
+					{dataPerformance && <UserPerformance dataPerformance={dataPerformance} />}
+					{dataUser && <UserProgression score={dataUser.todayScore} />}
 				</section>
 				<section className="user-data__nutrition">
 					{numberCalorie && <NutritionValue content={numberCalorie} value="Calories" />}
-					<NutritionValue content={numberProteines} value="Protéines" />
-					<NutritionValue content={numberGlucides} value="Glucides" />
-					<NutritionValue content={numberLipides} value="Lipides" />
+					{numberProteines && <NutritionValue content={numberProteines} value="Protéines" />}
+					{numberGlucides && <NutritionValue content={numberGlucides} value="Glucides" />}
+					{numberLipides && <NutritionValue content={numberLipides} value="Lipides" />}
 				</section>
 			</section>
 		</main>

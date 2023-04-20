@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
+/**
+ *
+ * @param { Object } data.dataAverageSessions
+ * @returns
+ */
 export default function SessionDuration(data) {
 	const [perc, setPerc] = useState(100);
+	let gradient = `linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,0,0,1) calc(${perc}% - 13px), rgba(230,0,0,1) calc(${perc}% - 13px), rgba(230,0,0,1) 100%)`;
 
 	const CustomizedDot = (props) => {
 		const { cx, cy } = props;
@@ -20,22 +27,9 @@ export default function SessionDuration(data) {
 					cx="73.945"
 					cy="75.959"
 					r="43.734"
-					style={{ fill: "url(#_Radial1)" }}
+					style={{ fill: "rgba(255,255,255,0.5)" }}
 				/>
 				<circle cx="73.945" cy="75.959" r="43.734" style={{ fill: "white" }} />
-				<defs>
-					<radialGradient
-						id="_Radial1"
-						x1="0%"
-						y1="0"
-						r="100"
-						gradientUnits="userSpaceOnUse"
-						gradientTransform="matrix(43.734,0,-0,43.734,73.945,75.9591)"
-					>
-						<stop offset="50%" stopColor="rgba(255,255,255,1)" />
-						<stop offset="100%" stopColor="rgba(255,255,255,0.5)" />
-					</radialGradient>
-				</defs>
 			</svg>
 		);
 	};
@@ -44,11 +38,13 @@ export default function SessionDuration(data) {
 		if (hoveredData && hoveredData.activePayload) {
 			const percentage = (hoveredData.activeLabel * 100) / data.dataAverageSessions.length;
 			setPerc(percentage);
+			document.querySelector(".user-data__duration").style.background = gradient;
 		}
 	};
 
 	const onMouseOut = () => {
 		setPerc(100);
+		document.querySelector(".user-data__duration").style.background = "#FF0000";
 	};
 
 	return (
@@ -86,3 +82,7 @@ export default function SessionDuration(data) {
 		</section>
 	);
 }
+
+SessionDuration.propTypes = {
+	dataAverageSessions: PropTypes.array.isRequired,
+};

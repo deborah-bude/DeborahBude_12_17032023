@@ -1,21 +1,23 @@
 import React from "react";
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 
+/**
+ *
+ * @param { Object } data.dataPerformance
+ * @returns
+ */
 export default function UserPerformance(data) {
-	if (!data) {
-		return null;
-	}
-
 	const performance = data.dataPerformance.data.map((data) => {
 		let kind;
 		const value = data.value;
+
 		const dictionary = {
-			1: "cardio",
-			2: "energy",
-			3: "endurance",
-			4: "strength",
-			5: "speed",
-			6: "intensity",
+			1: "Cardio",
+			2: "Energie",
+			3: "Endurance",
+			4: "Force",
+			5: "Vitesse",
+			6: "Intensité",
 		};
 
 		kind = dictionary[data.kind];
@@ -23,6 +25,7 @@ export default function UserPerformance(data) {
 		return { value: value, kind: kind };
 	});
 
+	console.log(performance);
 	return (
 		<section className="user-data__performance">
 			<ResponsiveContainer width="100%" height={250}>

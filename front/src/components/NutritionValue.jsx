@@ -1,13 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import caloriesIcon from "../assets/calories-icon.svg";
 import proteinIcon from "../assets/protein-icon.svg";
 import carbsIcon from "../assets/carbs-icon.svg";
 import fatIcon from "../assets/fat-icon.svg";
 
+/**
+ *
+ * @param { String } nutrition.content
+ * @param { String } nutrition.value
+ * @returns
+ */
 export default function NutritionValue(nutrition) {
 	let icon;
 	let altIcon = "Icône" + nutrition.value;
 	let classIcon = "nutrition-value " + nutrition.value;
+
 	switch (nutrition.value) {
 		case "Calories":
 			icon = caloriesIcon;
@@ -28,6 +36,7 @@ export default function NutritionValue(nutrition) {
 		default:
 			break;
 	}
+
 	return (
 		<div className={classIcon}>
 			<img src={icon} alt={altIcon} />
@@ -38,3 +47,8 @@ export default function NutritionValue(nutrition) {
 		</div>
 	);
 }
+
+NutritionValue.propTypes = {
+	content: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+};

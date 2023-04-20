@@ -8,12 +8,13 @@ import { sourceApi } from "./fetchAPI";
 import { sourceMock } from "./fetchMock";
 
 function App() {
+	const source = sourceApi;
 	return (
 		<div className="App">
 			<Header />
 			<Routes>
-				<Route path="/" element={<Home source={sourceApi} />} />
-				<Route path="/:id" element={<Home source={sourceApi} />} />
+				<Route path="/" element={<Home source={source} />} />
+				<Route path="/:id" element={<Home source={source} />} />
 				<Route path="/page-non-trouvee" element={<Error404 />} />
 			</Routes>
 			<Footer />
