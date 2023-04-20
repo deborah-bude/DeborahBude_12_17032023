@@ -1,7 +1,7 @@
 # Install the project
 
 Presentation of the user profile page retrieving data from the logged-in user. 
-The data is available in the [back] folder (./back/).
+The data is available in the [back](./back/) folder.
 
 ## Clone repository
 
