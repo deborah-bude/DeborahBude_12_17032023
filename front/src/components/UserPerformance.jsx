@@ -25,11 +25,17 @@ export default function UserPerformance(data) {
 		return { value: value, kind: kind };
 	});
 
-	console.log(performance);
 	return (
 		<section className="user-data__performance">
 			<ResponsiveContainer width="100%" height={250}>
-				<RadarChart startAngle={210} endAngle={570} outerRadius={90} data={performance}>
+				<RadarChart
+					// barCategoryGap="10px"
+					// barGap={5}
+					startAngle={210}
+					endAngle={570}
+					outerRadius={63}
+					data={performance}
+				>
 					<PolarGrid radialLines={false} />
 					<PolarAngleAxis dataKey="kind" fill="#FF0101" />
 					<Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />

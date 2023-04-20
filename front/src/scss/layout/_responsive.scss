@@ -1,7 +1,69 @@
 @media screen and (max-width: $tablet-breakpoint) {
-	
 }
 
 @media screen and (max-width: $phone-breakpoint) {
-	
+	.entete-page {
+		height: auto;
+		position: static;
+
+		& > div {
+			justify-content: center;
+		}
+
+		&__nav-item {
+			width: 100%;
+			text-align: center;
+			margin: 5px;
+		}
+	}
+
+	.entete-page__logo {
+		width: 50%;
+	}
+
+	.corps-page {
+		margin: 30px;
+	}
+
+	.user-data {
+		&__details {
+			width: 100%;
+		}
+
+		&__nutrition {
+			width: 100%;
+		}
+		&__duration {
+			width: 100%;
+		}
+		&__performance {
+			width: 100%;
+		}
+		&__progression {
+			width: 100%;
+		}
+	}
+
+	.pied-page {
+		width: 100%;
+		height: auto;
+		position: static;
+		align-content: center;
+		padding: 20px 0;
+
+		&__link {
+			display: inline-block;
+			margin-right: 10px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+
+		p {
+			text-orientation: initial;
+			transform: none;
+			writing-mode: initial;
+		}
+	}
 }
