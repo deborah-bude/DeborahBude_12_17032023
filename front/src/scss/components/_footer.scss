@@ -16,10 +16,15 @@
 	& > ul {
 		margin: auto;
 	}
+
 	p {
 		writing-mode: vertical-rl;
 		text-orientation: mixed;
 		transform: scale(-1);
 		margin: 20px auto;
+	}
+
+	&__link {
+		width: 50px;
 	}
 }
