@@ -2,6 +2,12 @@
 
 This repo contains all the source code to run the micro API for the sports analytics dashboard SportSee.
 
+To install the node_modules folder, in the project directory, you can run :
+
+```bash
+npm install
+```
+
 ## 1. General information
 
 To start this project, you are free to use Docker or not. In this documentation, we will see several methods to launch the project easily.

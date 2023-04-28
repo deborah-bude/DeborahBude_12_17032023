@@ -9,7 +9,6 @@ import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
  */
 export default function SessionDuration(data) {
 	const [perc, setPerc] = useState(100);
-	let gradient = `linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,0,0,1) calc(${perc}% - 13px), rgba(230,0,0,1) calc(${perc}% - 13px), rgba(230,0,0,1) 100%)`;
 
 	const CustomizedDot = (props) => {
 		const { cx, cy } = props;
@@ -38,19 +37,17 @@ export default function SessionDuration(data) {
 		if (hoveredData && hoveredData.activePayload) {
 			const percentage = (hoveredData.activeLabel * 100) / data.dataAverageSessions.length;
 			setPerc(percentage);
-			document.querySelector(".user-data__duration").style.background = gradient;
 		}
 	};
 
 	const onMouseOut = () => {
 		setPerc(100);
-		document.querySelector(".user-data__duration").style.background = "#FF0000";
 	};
 
 	return (
-		<section className="user-data__duration">
+		<section className="user-data__duration" style={{background : `linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,0,0,1) calc(${perc}% - 13px), rgba(230,0,0,1) calc(${perc}% - 13px), rgba(230,0,0,1) 100%)`}}>
 			<h2>Durée moyenne des sessions</h2>
-			<ResponsiveContainer width="100%" height={250}>
+			<ResponsiveContainer width="100%" height={200}>
 				<LineChart
 					data={data.dataAverageSessions}
 					onMouseMove={onMouseMove}

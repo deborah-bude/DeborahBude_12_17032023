@@ -27,10 +27,8 @@ export default function UserPerformance(data) {
 
 	return (
 		<section className="user-data__performance">
-			<ResponsiveContainer width="100%" height={250}>
+			<ResponsiveContainer width="100%" height={200}>
 				<RadarChart
-					// barCategoryGap="10px"
-					// barGap={5}
 					startAngle={210}
 					endAngle={570}
 					outerRadius={63}

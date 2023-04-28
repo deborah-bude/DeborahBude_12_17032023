@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+To install the node_modules folder, in the project directory, you can run :
+
+```bash
+npm install
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -32,8 +38,6 @@ You have the choice between :
 - Mock data (in local)
 
 To change te source, change the variable "source" in l.11 in the [App.js](../front/src/App.js) file by sourceApi / sourceMock.
-
-##
 
 ## Learn More
 

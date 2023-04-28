@@ -6,7 +6,7 @@
 
 	h2 {
 		position: absolute;
-		top: 15px;
+		top: 10px;
 		left: 20px;
 	}
 
@@ -50,10 +50,13 @@
 .user-data__duration,
 .user-data__performance,
 .user-data__progression {
-	width: 30%;
+	width: 32%;
 	border-radius: 5px;
-	padding: 30px 5px;
-	position: relative;
+	position: relative;	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	padding: 20px 0;
 }
 
 .radial-chart {
@@ -80,18 +83,18 @@
 .radial-chart .recharts-wrapper {
 	position: relative;
 	z-index: 2;
-	// &:after {
-	// 	content: "";
-	// 	position: absolute;
-	// 	top: 50%;
-	// 	left: 50%;
-	// 	transform: translate(-50%, -50%);
-	// 	background: white;
-	// 	width: 85%;
-	// 	height: 85%;
-	// 	border-radius: 50%;
-	// 	z-index: -1;
-	// }
+	&:after {
+		content: "";
+	 	position: absolute;
+	 	top: 50%;
+	 	left: 50%;
+	 	transform: translate(-50%, -50%);
+	 	background: white;
+	 	width: 85%;
+	 	height: 85%;
+	 	border-radius: 50%;
+	 	z-index: -1;
+	}
 }
 
 .recharts-polar-angle-axis-tick-value {

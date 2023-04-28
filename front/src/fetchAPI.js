@@ -7,9 +7,6 @@ export function userData(userId) {
 		.then(function (response) {
 			return response.json();
 		})
-		.then(function (data) {
-			return data;
-		})
 		.catch((err) => {
 			console.log(err.message);
 		});
@@ -23,9 +20,6 @@ export function userActivity(userId) {
 	})
 		.then(function (response) {
 			return response.json();
-		})
-		.then(function (data) {
-			return data;
 		})
 		.catch((err) => {
 			console.log(err.message);
@@ -41,9 +35,6 @@ export function userAverageSessions(userId) {
 		.then(function (response) {
 			return response.json();
 		})
-		.then(function (data) {
-			return data;
-		})
 		.catch((err) => {
 			console.log(err.message);
 		});
@@ -53,7 +44,7 @@ export function userAverageSessions(userId) {
  * Get user performance data from API
  *
  * @param {string} userId
- * @returns
+ * @returns { Promise<object> }
  */
 export function userPerformance(userId) {
 	const url = `http://localhost:3080/user/${userId}/performance`;
@@ -63,9 +54,6 @@ export function userPerformance(userId) {
 	})
 		.then(function (response) {
 			return response.json();
-		})
-		.then(function (data) {
-			return data;
 		})
 		.catch((err) => {
 			console.log(err.message);

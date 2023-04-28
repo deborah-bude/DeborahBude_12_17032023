@@ -9,6 +9,7 @@ import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
  */
 export default function UserProgression(props) {
 	const score = props.score * 100;
+	console.log(score)
 	const data = [
 		{ score: 100, fill: "white", background: "#ffffff" },
 		{ score: score, fill: "#FF0000" },
@@ -22,8 +23,6 @@ export default function UserProgression(props) {
 					<strong>{score}%</strong> <br />
 					de votre objectif
 				</p>
-				<div style={{ width: "100%", height: 230 }}>
-					<ResponsiveContainer>
 						<RadialBarChart
 							startAngle={90}
 							endAngle={460}
@@ -31,11 +30,10 @@ export default function UserProgression(props) {
 							outerRadius={100}
 							barSize={10}
 							data={data}
+							width={200} height={200}
 						>
 							<RadialBar background dataKey="score" cornerRadius={100} />
 						</RadialBarChart>
-					</ResponsiveContainer>
-				</div>
 			</div>
 		</section>
 	);

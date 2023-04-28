@@ -4,8 +4,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./Pages/Home/index";
 import Error404 from "./Pages/404/index";
-import { sourceApi } from "./fetchAPI";
 import { sourceMock } from "./fetchMock";
+import {sourceApi} from "./fetchAPI";
 
 function App() {
 	const source = sourceApi;
