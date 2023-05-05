@@ -1,127 +1,129 @@
 .user-data {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
 
-	h2 {
-		position: absolute;
-		top: 10px;
-		left: 20px;
-	}
+  h2 {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
 
-	&__details {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		width: 70%;
-	}
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+  }
 
-	&__nutrition {
-		display: flex;
-		flex-wrap: wrap;
-		align-content: space-between;
-		width: 28%;
-	}
+  &__nutrition {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 28%;
+  }
 
-	&__daily {
-		width: 100%;
-		background: #fbfbfb;
-		border-radius: 5px;
-		padding: 30px 5px;
-		position: relative;
-		margin-bottom: 30px;
-	}
+  &__daily {
+    width: 100%;
+    background: #fbfbfb;
+    border-radius: 5px;
+    padding: 30px 5px;
+    position: relative;
+    margin-bottom: 30px;
+  }
 
-	&__duration {
-		background: $second-color;
-		color: #fff;
-	}
+  &__duration {
+    background: $second-color;
+    color: #fff;
+  }
 
-	&__performance {
-		background: $title-color;
-	}
+  &__performance {
+    background: $title-color;
+  }
 
-	&__progression {
-		background: #fbfbfb;
-	}
+  &__progression {
+    background: #fbfbfb;
+  }
 }
 
 .user-data__duration,
 .user-data__performance,
 .user-data__progression {
-	width: 32%;
-	border-radius: 5px;
-	position: relative;	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	padding: 20px 0;
+  width: 32%;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
 }
 
 .radial-chart {
-	position: relative;
+  position: relative;
 }
 
 .progression-score {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	z-index: 3;
-	width: 50%;
-	color: $sub-title-color;
-	font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 3;
+  width: 50%;
+  color: $sub-title-color;
+  font-weight: 700;
 
-	strong {
-		color: $title-color;
-		font-size: 2em;
-	}
+  strong {
+    color: $title-color;
+    font-size: 2em;
+  }
 }
 
 .radial-chart .recharts-wrapper {
-	position: relative;
-	z-index: 2;
-	&:after {
-		content: "";
-	 	position: absolute;
-	 	top: 50%;
-	 	left: 50%;
-	 	transform: translate(-50%, -50%);
-	 	background: white;
-	 	width: 85%;
-	 	height: 85%;
-	 	border-radius: 50%;
-	 	z-index: -1;
-	}
+  position: relative;
+  z-index: 2;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    z-index: -1;
+  }
 }
 
 .recharts-polar-angle-axis-tick-value {
-	fill: white;
+  fill: white;
 }
 
 .recharts-legend-item-text {
-	color: #74798c !important;
+  color: #74798c !important;
 }
 
 .recharts-radial-bar-background:first-child {
-	fill: white;
+  fill: white;
 }
 
 #animation-circle {
-	transform-origin: center;
-	animation: scale-circle 1s ease-in-out infinite;
+  transform-origin: center;
+  animation: scale-circle 1s ease-in-out infinite;
 }
 
 @keyframes scale-circle {
-	0% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.8);
-	}
-	100% {
-		transform: scale(1);
-	}
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
